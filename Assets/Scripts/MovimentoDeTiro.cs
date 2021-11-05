@@ -20,4 +20,9 @@ public class MovimentoDeTiro : MonoBehaviour
 
         gameObject.transform.position += gameObject.transform.forward * velocity;
     }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        Destroy(collision.gameObject);
+    }
 }
