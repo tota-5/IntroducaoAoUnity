@@ -6,27 +6,36 @@ public class Movement : MonoBehaviour
 {
     public float velocity = 0.1f;
 
+    Rigidbody playerRigidBody;
+
+    private void Start()
+    {
+        playerRigidBody = GetComponent<Rigidbody>();
+    }
+
     // Update is called once per frame
     void Update()
     {
+        Vector3 currentPosition = gameObject.transform.position;
+
         if(Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow))
         {
-            gameObject.transform.position += gameObject.transform.forward * velocity;
+            playerRigidBody.AddForce(gameObject.transform.forward * velocity);
         }
 
         if (Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow))
         {
-            gameObject.transform.position += gameObject.transform.forward * -1 * velocity;
+            playerRigidBody.AddForce(gameObject.transform.forward * -1 * velocity);
         }
 
         if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
         {
-            gameObject.transform.position += gameObject.transform.right * -1 * velocity;
+            playerRigidBody.AddForce(gameObject.transform.right * -1 * velocity);
         }
 
         if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
         {
-            gameObject.transform.position += gameObject.transform.right * velocity;
+            playerRigidBody.AddForce(gameObject.transform.right * velocity);
         }
     }
 }
