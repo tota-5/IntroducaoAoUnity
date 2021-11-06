@@ -23,6 +23,18 @@ public class MovimentoDeTiro : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        Destroy(collision.gameObject);
+        EnemyController thisEnemyController = collision.gameObject.GetComponent<EnemyController>();
+
+        if(thisEnemyController == null)
+        {
+            return;
+        }
+
+        thisEnemyController.vida--;
+
+        if(thisEnemyController.vida < 0)
+        {
+            Destroy(collision.gameObject);
+        }
     }
 }

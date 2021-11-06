@@ -6,6 +6,8 @@ public class EnemyController : MonoBehaviour
 {
     GameObject target;
 
+    public int vida = 10;
+
     public float velocity = 0.01f;
 
     private void Start()

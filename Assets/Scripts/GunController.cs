@@ -26,6 +26,7 @@ public class GunController : MonoBehaviour
             if (Input.GetMouseButton(0))
             {
                 fireTimer = 0;
+
                 Instantiate(prefabDoTiro, gameObject.transform.position, gameObject.transform.rotation);
             }
         }
