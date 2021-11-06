@@ -16,26 +16,28 @@ public class Movement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Vector3 currentPosition = gameObject.transform.position;
+        Vector3 velocityVector = Vector3.zero;
 
         if(Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow))
         {
-            playerRigidBody.AddForce(gameObject.transform.forward * velocity);
+            velocityVector = gameObject.transform.forward;
         }
 
         if (Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow))
         {
-            playerRigidBody.AddForce(gameObject.transform.forward * -1 * velocity);
+            velocityVector += (gameObject.transform.forward * -1);
         }
 
         if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
         {
-            playerRigidBody.AddForce(gameObject.transform.right * -1 * velocity);
+            velocityVector += (gameObject.transform.right * -1);
         }
 
         if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
         {
-            playerRigidBody.AddForce(gameObject.transform.right * velocity);
+            velocityVector += (gameObject.transform.right);
         }
+
+        playerRigidBody.velocity = new Vector3( velocityVector.x * velocity, playerRigidBody.velocity.y, velocityVector.z * velocity);
     }
 }

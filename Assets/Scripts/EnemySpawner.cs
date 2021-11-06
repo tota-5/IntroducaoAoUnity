@@ -21,15 +21,6 @@ public class EnemySpawner : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(enemysAlive.Count < 10)
-        {
-            Vector3 enemyPosition = new Vector3(player.transform.position.x + Random.Range(-30, 30),
-                player.transform.position.y, player.transform.position.z + Random.Range(-30, 30));
-
-            GameObject newEnemy = Instantiate(enemy, enemyPosition, Quaternion.identity);
-
-            enemysAlive.Add(newEnemy);
-        }
 
         for(int i = 0; i < enemysAlive.Count; i++)
         {
@@ -39,5 +30,15 @@ public class EnemySpawner : MonoBehaviour
                 break;
             }
         }
+    }
+
+    public void SpawnEnemy()
+    {
+        Vector3 enemyPosition = new Vector3(player.transform.position.x + Random.Range(-30, 30),
+            player.transform.position.y, player.transform.position.z + Random.Range(-30, 30));
+
+        GameObject newEnemy = Instantiate(enemy, enemyPosition, Quaternion.identity);
+
+        enemysAlive.Add(newEnemy);
     }
 }

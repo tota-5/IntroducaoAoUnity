@@ -6,6 +6,8 @@ public class GunController : MonoBehaviour
 {
     public GameObject prefabDoTiro;
 
+    public Animator myAnimator;
+
     public float fireRate = 1;
 
     float fireTimer;
@@ -21,13 +23,17 @@ public class GunController : MonoBehaviour
     {
         fireTimer += Time.deltaTime;
 
-        if(fireTimer > fireRate)
+        myAnimator.SetBool("EstouAtirando", false);
+
+        if (fireTimer > fireRate)
         {
             if (Input.GetMouseButton(0))
             {
                 fireTimer = 0;
 
                 Instantiate(prefabDoTiro, gameObject.transform.position, gameObject.transform.rotation);
+
+                myAnimator.SetBool("EstouAtirando", true);
             }
         }
     }
